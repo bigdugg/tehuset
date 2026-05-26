@@ -1,7 +1,7 @@
 const path = require('path');
 
 const isGitHubPagesPreview = process.env.GITHUB_PAGES === 'true';
-const repoBasePath = '/tehuset-website';
+const repoBasePath = '/tehuset';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

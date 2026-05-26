@@ -2,13 +2,14 @@ import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join, extname } from 'node:path';
 
 const outDir = join(process.cwd(), 'out');
+const repoBasePath = '/tehuset';
 const textExtensions = new Set(['.html', '.txt', '.js', '.css']);
 const replacements = [
-  ['"/assets/', '"/tehuset-website/assets/'],
-  ["'/assets/", "'/tehuset-website/assets/"],
-  ['url(/assets/', 'url(/tehuset-website/assets/'],
-  ["url('/assets/", "url('/tehuset-website/assets/"],
-  ['url("/assets/', 'url("/tehuset-website/assets/'],
+  ['"/assets/', `"${repoBasePath}/assets/`],
+  ["'/assets/", `'${repoBasePath}/assets/`],
+  ['url(/assets/', `url(${repoBasePath}/assets/`],
+  ["url('/assets/", `url('${repoBasePath}/assets/`],
+  ['url("/assets/', `url("${repoBasePath}/assets/`],
 ];
 
 async function walk(dir) {
